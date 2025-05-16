@@ -1,0 +1,795 @@
+/*
+ * Copyright 2025 [Tu Nombre o Nombre de tu Sitio/Empresa]. Todos los derechos reservados.
+ * Código CSS para la Calculadora de Materiales Tablayeso.
+ * Estilizado con paleta de colores oscuros con contraste mejorado y fondo grunge.
+ */
+
+/* Define una paleta de colores oscuros con contraste y roles de texto definidos */
+:root {
+    /* --- Paleta de colores anterior (comentada) --- */
+    /* --color-brand-primary: #4F6F52; */
+    /* --color-brand-secondary: #739072; */
+    /* --color-brand-tertiary: #C0D6C0; */
+    /* --color-background: #FFFFFF; */
+    /* --color-background-alt: #F0F5F0; */
+    /* --color-text: #333333; */
+    /* --color-text-secondary: #555555; */
+    /* --color-border: #DDDDDD; */
+    /* --color-hover-subtle: rgba(192, 214, 192, 0.3); */
+    /* --color-error: #c0392b; */
+
+    /* --- Paleta de colores oscuros con contraste mejorado --- */
+    --color-dark-background: #1A2B1A; /* Verde Muy Oscuro - Fondo principal */
+    --color-dark-surface: #2E3E2E; /* Verde Oscuro - Contenedor, Secciones */
+    --color-dark-border: #455A45; /* Verde Oscuro Apagado - Bordes, divisores */
+    --color-dark-accent: #6A806A; /* Verde Medio - Títulos secundarios, énfasis, botones principales */
+    --color-dark-secondary-accent: #8A9A8A; /* Verde Apagado Más Claro - Subtítulos secundarios, acentos, focus de inputs */
+    --color-dark-surface-alt: #3A4A3A; /* Verde Oscuro Alternativo - Para bandas en tablas o secciones */
+
+    /* --- Nuevas variables para fondos con transparencia (95% opaco) --- */
+    --color-dark-background-transparent: rgba(26, 43, 26, 0.70);
+    --color-dark-surface-transparent: rgba(46, 62, 46, 0.70);
+    --color-dark-surface-alt-transparent: rgba(58, 74, 58, 0.70);
+
+    /* --- Colores de texto con roles específicos --- */
+    --color-text-heading: #FFFFFF; /* Blanco Puro - Para títulos principales (h1, h2) */
+    --color-text-body: #A0C0A0; /* Verde Claro Apagado - Para texto general (párrafos, etiquetas, texto de tabla, footer, etc.) */
+    --color-text-input: #FFFFFF; /* Blanco Puro - Para el texto dentro de los campos de input (valores que escribe el usuario) */
+    --color-text-button: #FFFFFF; /* Blanco Puro - Para el texto en la mayoría de los botones */
+
+
+    --color-hover-subtle: rgba(106, 128, 106, 0.3); /* Verde Transparente para hover */
+    --color-error: #c0392b; /* Rojo para errores */
+
+
+    /* Espaciados comunes */
+    --spacing-unit: 8px;
+    --spacing-small: calc(var(--spacing-unit) * 1.5); /* 12px */
+    --spacing-medium: calc(var(--spacing-unit) * 2); /* 16px */
+    --spacing-large: calc(var(--spacing-unit) * 3); /* 24px */
+    --spacing-extra-large: calc(var(--spacing-unit) * 4); /* 32px */
+
+    /* Sombras */
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.06); /* Las sombras pueden necesitar ajustes en un tema oscuro */
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-pronounced: 0 10px 25px rgba(0, 0, 0, 0.15); /* Considerar ajustar la opacidad o color de las sombras en tema oscuro */
+
+    /* Bordes redondeados */
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 12px;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* Fuente principal */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-dark-background); /* Fondo base muy oscuro (servirá como color de respaldo y para el color base de la imagen) */
+
+    background-image: url('images/fondo-verde-abstracto-del-grunge.jpg'); /* Ruta correcta relativa a style.css dentro de la carpeta public/CSS! */
+    background-repeat: no-repeat; /* ¡Cambiado a no-repeat! */
+    background-size: cover; /* ¡Añadido para que cubra el fondo! */
+    background-position: center center; /* Centra la imagen, útil si no se repite */
+    background-attachment: fixed; /* Opcional: Para que el fondo se mantenga fijo mientras el contenido se desplaza */
+
+    color: var(--color-text-body); /* Color de texto general del cuerpo (Verde Claro Apagado) */
+    min-height: 100vh;
+    display: flex; /* Usar flexbox para centrar contenido verticalmente si es necesario */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: flex-start; /* Alinear al inicio verticalmente, para no forzar centrado completo */
+    padding: var(--spacing-extra-large) 0; /* Añadir padding superior/inferior al body */
+}
+
+.container {
+    max-width: 1000px; /* Un poco más ancho */
+    width: 95%; /* Asegura que no ocupe el 100% en pantallas pequeñas */
+    margin: 0 auto; /* Centra el contenedor */
+    background: var(--color-dark-surface-transparent); /* CAMBIO: Fondo oscuro para el contenido principal con transparencia */
+    padding: var(--spacing-extra-large); /* Más padding interno */
+    border-radius: var(--border-radius-large); /* Bordes más redondeados */
+    box-shadow: var(--shadow-pronounced); /* Sombra más pronunciada y suave */
+}
+
+h1, h2 {
+    font-family: 'Oswald', sans-serif; /* Fuente para títulos */
+    color: var(--color-text-heading); /* Color de títulos principales (Blanco) */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: var(--spacing-extra-large);
+    text-transform: uppercase; /* Títulos en mayúsculas */
+    letter-spacing: 1.5px; /* Mayor espaciado entre letras */
+}
+
+h1 {
+    font-size: 2.5em; /* Tamaño de título principal */
+    margin-bottom: var(--spacing-large);
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: var(--spacing-large);
+    border-bottom: 2px solid var(--color-dark-border); /* Separador visual */
+    padding-bottom: var(--spacing-small);
+    letter-spacing: 1px;
+}
+
+.input-section, .results-section {
+    margin-bottom: var(--spacing-extra-large); /* Más espacio entre secciones */
+    padding: var(--spacing-large); /* Más padding interno */
+    border: 1px solid var(--color-dark-border); /* Borde sutil */
+    border-radius: var(--border-radius-medium); /* Bordes redondeados */
+    background-color: var(--color-dark-surface-transparent); /* CAMBIO: Fondo oscuro para secciones con transparencia */
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.03); /* Sombra interna sutil */
+}
+
+#items-container {
+    margin-bottom: var(--spacing-large); /* Más espacio antes del botón de agregar */
+}
+
+.item-block {
+    border: 1px solid var(--color-dark-border);
+    padding: var(--spacing-large); /* Más padding */
+    margin-bottom: var(--spacing-large);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--color-dark-surface-transparent); /* CAMBIO: Fondo oscuro para bloques de ítem con transparencia */
+    position: relative;
+    box-shadow: var(--shadow-subtle); /* Sombra para bloques de ítem */
+    transition: box-shadow 0.2s ease-in-out; /* Transición para hover */
+}
+
+.item-block:hover {
+    box-shadow: var(--shadow-medium); /* Sombra más intensa en hover */
+}
+
+.item-block h3 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--color-dark-secondary-accent); /* Verde apagado más claro (para títulos H3) */
+    margin-top: 0;
+    margin-bottom: var(--spacing-medium);
+    border-bottom: 2px solid var(--color-dark-border); /* Borde inferior más definido */
+    padding-bottom: var(--spacing-small);
+    font-size: 1.5em;
+}
+
+.input-group {
+    margin-bottom: var(--spacing-medium); /* Espacio entre grupos de input */
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: center;
+    gap: var(--spacing-small); /* Espacio entre label e input */
+}
+
+.input-group label {
+    display: block; /* Label en su propia línea o flexible */
+    width: 200px; /* Ancho fijo para labels, ajusta según necesidad */
+    font-weight: bold;
+    color: var(--color-text-body); /* Color para etiquetas (Verde Claro Apagado) */
+    flex-shrink: 0; /* Evita que el label se encoja */
+}
+
+.input-group input[type="number"],
+.input-group select {
+    flex-grow: 1; /* Permite que el input/select ocupe el espacio restante */
+    padding: var(--spacing-small) var(--spacing-medium); /* Más padding */
+    border: 1px solid var(--color-dark-border);
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 150px; /* Ancho mínimo para inputs */
+    background-color: var(--color-dark-background-transparent); /* CAMBIO: Fondo oscuro para inputs con transparencia */
+    color: var(--color-text-input); /* Texto dentro de inputs (Blanco) */
+}
+
+.input-group input[type="number"]:focus,
+.input-group select:focus {
+     border-color: var(--color-dark-secondary-accent); /* Borde verde apagado al enfocar */
+     outline: none;
+     box-shadow: 0 0 8px rgba(138, 154, 138, 0.3); /* Sombra suave al enfocar usando el color verde secundario */
+}
+
+/* Estilos para el checkbox */
+.input-group input[type="checkbox"] {
+    width: auto; /* Anula el flex-grow */
+    margin-right: var(--spacing-small);
+    /* Puedes necesitar ajustar la apariencia del checkbox para el tema oscuro */
+}
+
+/* --- Estilos para los nuevos contenedores de tipo de panel --- */
+.muro-panel-types,
+.cielo-panel-type {
+    margin-top: var(--spacing-large); /* Espacio arriba de los selectores de panel */
+    padding-top: var(--spacing-medium); /* Padding arriba para separar visualmente */
+    border-top: 1px dashed var(--color-dark-border); /* Borde punteado para separar */
+}
+
+/* Añadir borde y padding si hay dos selectores de panel en muro */
+.muro-panel-types:not(.hidden) {
+    padding: var(--spacing-medium); /* Padding alrededor de los selectores de panel */
+    border: 1px solid var(--color-dark-border); /* Borde alrededor del grupo */
+    border-radius: var(--border-radius-medium);
+    margin-bottom: var(--spacing-medium); /* Espacio debajo del grupo de selectores */
+}
+
+/* Asegura que los input-group dentro de estos contenedores tengan su margen */
+.muro-panel-types .input-group,
+.cielo-panel-type .input-group {
+    margin-bottom: var(--spacing-medium); /* Espacio entre los selectores de panel si hay varios (muro con 2 caras) */
+}
+
+/* Elimina el margen inferior del último input-group dentro del contenedor de panel types */
+.muro-panel-types .input-group:last-child,
+.cielo-panel-type .input-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilos generales para botones */
+button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-small) var(--spacing-medium); /* Ajusta padding */
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.1s ease;
+    margin-top: var(--spacing-medium);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-subtle);
+    /* Color de texto por defecto para botones (será sobrescrito por selectores más específicos si existen) */
+    color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+}
+
+button:hover:not(:disabled) {
+    opacity: 0.95; /* Ligera opacidad en hover */
+    transform: translateY(-1px); /* Ligero desplazamiento hacia arriba */
+    box-shadow: var(--shadow-medium);
+}
+
+button:active:not(:disabled) {
+     transform: translateY(0); /* Vuelve a la posición normal al hacer clic */
+     box-shadow: var(--shadow-subtle);
+}
+
+button:disabled {
+    background-color: #555555; /* Gris más oscuro para deshabilitado */
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    color: #999999; /* Color de texto para botón deshabilitado */
+}
+
+/* Estilos específicos para el botón "Agregar Muro o Cielo" */
+#add-item-btn {
+    background-color: var(--color-dark-secondary-accent); /* Verde apagado más claro */
+    color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+}
+
+#add-item-btn:hover:not(:disabled) {
+    background-color: #7A8A7A; /* Tono un poco más oscuro al pasar el ratón */
+}
+
+/* Estilos para el botón principal de cálculo */
+#calculate-btn {
+     background-color: var(--color-dark-accent); /* Verde medio */
+     color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+     margin-top: var(--spacing-large);
+}
+
+#calculate-btn:hover:not(:disabled) {
+     background-color: #5A705A; /* Tono más oscuro al pasar el ratón */
+}
+
+/* Estilos para el contenedor de botones de descarga */
+.download-options {
+    display: flex; /* Botones en línea */
+    gap: var(--spacing-medium); /* Espacio entre botones */
+    margin-top: var(--spacing-large);
+    justify-content: flex-end; /* Alinear a la derecha */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan */
+}
+
+/* Estilos para botones dentro del contenedor de descarga */
+.download-options button {
+     width: auto; /* Anula width: 100% */
+     flex-grow: 0; /* No fuerces a crecer, usa contenido */
+     margin-top: 0; /* Anula margin-top */
+     padding: var(--spacing-small); /* Menos padding que botones principales */
+     font-size: 1rem; /* Fuente ligeramente más pequeña */
+     box-shadow: var(--shadow-subtle);
+     color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+}
+
+.download-options button:hover:not(:disabled) {
+     transform: translateY(-1px);
+     box-shadow: var(--shadow-medium);
+}
+
+.download-options button:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: var(--shadow-subtle);
+}
+
+#generate-pdf-btn {
+    background-color: var(--color-dark-accent); /* Verde medio para PDF */
+    color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+}
+
+#generate-pdf-btn:hover:not(:disabled) {
+    background-color: #5A705A; /* Tono más oscuro al pasar el ratón */
+}
+
+#generate-excel-btn {
+     background-color: #5A705A; /* Un verde diferente para Excel (dentro de la paleta oscura) */
+     color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+}
+
+#generate-excel-btn:hover:not(:disabled) {
+     background-color: #4A604A; /* Tono más oscuro al pasar el ratón */
+}
+
+/* --- Estilos específicos para el botón "Agregar Segmento" --- */
+/* Asumimos que a este botón en el HTML se le añadirá la clase "add-segment-button" */
+.add-segment-button {
+    background-color: var(--color-dark-surface-alt); /* Verde oscuro alternativo para el fondo */
+    color: var(--color-text-button); /* Texto blanco para alta legibilidad */
+    /* Hereda otras propiedades de estilo del selector 'button' si no se especifican aquí,
+       o puedes copiarlas explícitamente si necesitas asegurarte */
+    display: block;
+    width: 100%;
+    padding: var(--spacing-small) var(--spacing-medium);
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.1s ease;
+    margin-top: var(--spacing-medium); /* Espacio arriba del botón */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-subtle);
+}
+
+.add-segment-button:hover:not(:disabled) {
+    background-color: #4A5A4A; /* Tono ligeramente más oscuro al pasar el ratón */
+    opacity: 0.95;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.add-segment-button:active:not(:disabled) {
+     transform: translateY(0);
+     box-shadow: var(--shadow-subtle);
+}
+
+/* Estilos para el botón de eliminar (la 'x') */
+.remove-item-btn {
+    /* Color de fondo ajustado para entonar mejor */
+    background-color: var(--color-dark-background); /* Antes era var(--color-error) */
+    color: var(--color-text-button); /* Usamos la variable de color de texto para botones (Blanco) */
+    position: absolute;
+    top: var(--spacing-medium); /* Ajusta posición */
+    right: var(--spacing-medium); /* Ajusta posición */
+    border: none;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    padding: calc(var(--spacing-unit) / 2) var(--spacing-unit); /* Padding reducido */
+    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+    width: auto;
+    margin-top: 0;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+    box-shadow: none; /* Sin sombra inicial */
+}
+
+.remove-item-btn:hover {
+    /* Opcional: Podríamos mantener un sutil toque de rojo o un verde diferente en hover para la acción */
+    background-color: #c82333; /* Tono más oscuro al pasar el ratón (Mantenemos un toque rojo para indicar 'eliminar') */
+    transform: none; /* Evita la transformación de los botones principales */
+    box-shadow: var(--shadow-subtle); /* Añade una sombra suave en hover */
+}
+
+.remove-item-btn:active {
+    background-color: #bb2d3b; /* Tono más oscuro al hacer clic */
+    box-shadow: none;
+}
+
+/* Asegura que .hidden oculte el flex display */
+.hidden {
+    display: none !important;
+}
+
+/* --- Estilos para el contenido del resumen generado --- */
+#results-content {
+    background-color: var(--color-dark-surface-transparent); /* CAMBIO: Fondo oscuro con transparencia */
+    padding: var(--spacing-large); /* Más padding */
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--color-dark-border);
+    min-height: 80px; /* Altura mínima para visualización */
+    text-align: left;
+    word-break: break-word;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.03); /* Sombra interna */
+    line-height: 1.7; /* Interlineado para mejor legibilidad */
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+}
+
+#results-content .report-header h2 {
+     color: var(--color-dark-accent); /* Verde medio (para H2 dentro del reporte) */
+     margin-top: 0;
+     margin-bottom: var(--spacing-unit);
+     font-size: 1.8em; /* Ajuste de tamaño */
+     border-bottom: none; /* Quita el borde del h2 principal */
+     padding-bottom: 0;
+     text-align: left; /* Alinear a la izquierda */
+}
+
+#results-content .report-header p {
+    text-align: left; /* Alinear a la izquierda */
+    font-size: 0.95em; /* Tamaño legible para la fecha */
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    margin-top: 0;
+    margin-bottom: var(--spacing-large);
+}
+
+#results-content hr {
+    border: none;
+    border-top: 2px dashed var(--color-dark-border); /* Línea punteada para separación */
+    margin: var(--spacing-large) 0; /* Más espacio */
+}
+
+#results-content h3 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--color-dark-secondary-accent); /* Verde apagado más claro (para H3 en resumen) */
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+    border-bottom: 1px solid var(--color-dark-border); /* Borde más sutil */
+    padding-bottom: var(--spacing-small);
+    font-size: 1.4em;
+}
+
+/* Estilos para el resumen de cada ítem */
+.item-summary {
+    margin-bottom: var(--spacing-large);
+    padding: var(--spacing-medium);
+    border: 1px solid var(--color-dark-border);
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-dark-background-transparent); /* CAMBIO: Fondo muy oscuro con transparencia */
+    box-shadow: var(--shadow-subtle); /* Sombra suave */
+}
+
+.item-summary h4 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: var(--spacing-small);
+    color: var(--color-dark-accent); /* Verde medio (para títulos H4) */
+    font-size: 1.1em;
+    border-bottom: 1px dotted var(--color-dark-border); /* Borde punteado */
+    padding-bottom: var(--spacing-unit);
+}
+
+.item-summary p {
+    margin: var(--spacing-unit) 0; /* Más espacio vertical entre párrafos */
+    font-size: 0.95em;
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    display: flex; /* Usar flexbox para alinear etiqueta y valor */
+    justify-content: space-between; /* Espacio entre ellos */
+    flex-wrap: wrap; /* Permitir que se envuelvan si es necesario */
+}
+
+.item-summary p strong {
+    display: inline-block;
+    min-width: 180px; /* Ancho mínimo para la etiqueta */
+    margin-right: var(--spacing-medium); /* Espacio entre etiqueta y valor */
+    color: var(--color-text-body); /* Color para etiquetas (Verde Claro Apagado) */
+    flex-shrink: 0; /* Evita que la etiqueta se encoja */
+}
+
+.item-summary p span {
+    flex-grow: 1; /* Permite que el valor ocupe el espacio restante */
+    text-align: right; /* Alinea el valor a la derecha */
+    font-weight: normal; /* Asegura que el valor no esté en negrita */
+}
+
+/* Estilos para la Tabla de Materiales Totales */
+#results-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-medium); /* Ajuste de margen */
+    margin-bottom: var(--spacing-large);
+    box-shadow: var(--shadow-medium); /* Sombra para la tabla */
+    border-radius: var(--border-radius-medium); /* Aplica al contenedor table */
+    overflow: hidden; /* Asegura que los bordes redondeados se vean bien con el borde deladentro */
+    background-color: var(--color-dark-surface-transparent); /* CAMBIO: Fondo oscuro para la tabla con transparencia */
+}
+
+#results-content th,
+#results-content td {
+    border: 1px solid var(--color-dark-border); /* Bordes de celda sutiles */
+    padding: var(--spacing-medium); /* Más padding */
+    text-align: left;
+    font-size: 0.95em;
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+}
+
+#results-content th {
+    background-color: var(--color-dark-secondary-accent); /* Fondo para encabezados - Verde apagado más claro */
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-dark-background); /* Texto muy oscuro en encabezados de tabla */
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#results-content tbody tr:nth-child(even) {
+    background-color: var(--color-dark-surface-alt-transparent); /* CAMBIO: Raya para filas pares con transparencia */
+}
+
+#results-content tbody tr:hover { /* Efecto hover en filas */
+    background-color: var(--color-hover-subtle); /* Tinte verde suave al pasar el ratón */
+}
+
+#results-content td:last-child { /* Columna de cantidad */
+    text-align: right;
+    font-weight: bold;
+    color: var(--color-dark-accent); /* Verde medio para cantidades */
+}
+
+#results-content .error-message {
+    color: var(--color-error); /* Rojo de error */
+    font-weight: bold;
+    text-align: center;
+    margin-top: var(--spacing-large);
+    padding-top: var(--spacing-medium);
+    border-top: 2px dashed var(--color-error);
+}
+
+/* Estilos para la primera carga */
+#results-content p:first-child:last-child {
+    text-align: center;
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    font-style: italic;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: var(--spacing-extra-large);
+    padding-top: var(--spacing-large);
+    border-top: 1px solid var(--color-dark-border);
+    font-size: 0.85em;
+    color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+}
+
+footer p {
+    margin: var(--spacing-unit) 0; /* Espacio entre párrafos del footer */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-large) var(--spacing-medium);
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .input-group {
+        flex-direction: column; /* Stack label and input */
+        align-items: flex-start;
+        gap: var(--spacing-unit);
+    }
+
+    .input-group label {
+        width: auto; /* Remove fixed width */
+        margin-right: 0;
+    }
+
+    .input-group input[type="number"],
+    .input-group select {
+         width: 100%; /* Full width inputs */
+         min-width: 0;
+         color: var(--color-text-input); /* Asegurar color de texto en inputs responsive */
+    }
+
+     /* Responsive for panel type containers */
+    .muro-panel-types:not(.hidden),
+    .cielo-panel-type:not(.hidden) {
+        padding: var(--spacing-medium); /* Keep padding */
+        margin-bottom: var(--spacing-medium); /* Keep margin */
+        border: 1px solid var(--color-dark-border); /* Keep border */
+        border-radius: var(--border-radius-medium); /* Keep radius */
+        margin-top: var(--spacing-large); /* Keep top margin */
+        padding-top: var(--spacing-medium); /* Adjust padding top */
+    }
+
+
+    .remove-item-btn {
+        top: var(--spacing-small);
+        right: var(--spacing-small);
+        padding: 3px 6px;
+        font-size: 0.7rem;
+        /* Aseguramos que el color de fondo sea consistente en responsive */
+        background-color: var(--color-dark-background);
+        color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+    }
+
+    .download-options {
+        flex-direction: column; /* Stack download buttons */
+        gap: var(--spacing-unit);
+    }
+
+    .download-options button {
+         width: 100%; /* Full width download buttons */
+         flex-grow: 0;
+         color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+    }
+
+    .item-summary p {
+        flex-direction: column; /* Stack summary label and value */
+        align-items: flex-start;
+        gap: var(--spacing-unit);
+        color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    }
+
+    .item-summary p strong {
+        min-width: auto; /* Remove min width */
+        margin-right: 0;
+        color: var(--color-text-body); /* Color para etiquetas (Verde Claro Apagado) */
+    }
+
+    .item-summary p span {
+        text-align: left; /* Align value to the left */
+        color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    }
+
+    footer {
+        padding-top: var(--spacing-medium);
+        margin-top: var(--spacing-large);
+        color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    }
+     .clarification-text {
+        font-size: 0.8em; /* Smaller font on smaller screens */
+        color: var(--color-text-body); /* Color consistente (Verde Claro Apagado) */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .container {
+        padding: var(--spacing-medium) var(--spacing-unit);
+    }
+
+    button {
+        font-size: 1rem;
+        padding: var(--spacing-small);
+        color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+    }
+
+    .download-options button {
+        font-size: 0.9rem;
+        padding: var(--spacing-unit);
+        color: var(--color-text-button); /* Color de texto para botones (Blanco) */
+    }
+
+    #results-content th,
+    #results-content td {
+        padding: var(--spacing-unit);
+        font-size: 0.9em;
+        color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    }
+
+    footer {
+        font-size: 0.8em;
+        color: var(--color-text-body); /* Color de texto general (Verde Claro Apagado) */
+    }
+     .clarification-text {
+        font-size: 0.8em; /* Consistent smaller font */
+         color: var(--color-text-body); /* Color consistente (Verde Claro Apagado) */
+    }
+}
+
+/* Reglas para hacer que los contenedores de segmento sean contextos de posicionamiento */
+/* Asegúrate de que estas reglas estén presentes para .muro-segment y .cielo-segment */
+.item-block .muro-segment,
+.item-block .cielo-segment {
+    position: relative; /* Esto permite posicionar elementos hijos de forma absoluta */
+    /* Mantén cualquier otro estilo existente (borde, padding, margen, fondo, color) */
+    /* Ejemplo: */
+    border: 1px solid #444;
+    padding: 40px;
+    margin-bottom: 10px;
+    background-color: var(--color-dark-background-transparent); /* CAMBIO: con transparencia */
+    color: #fff; /* Maintain contrast for text */
+    border-radius: 5px;
+}
+
+/* Regla para dar espacio en el encabezado del segmento donde irá el botón */
+/* MODIFICAMOS esta regla para AUMENTAR AÚN MÁS el padding-right */
+.segment-header-line {
+    display: flex; /* Usa flexbox para alinear elementos */
+    justify-content: space-between; /* Espacia el número de segmento a la izquierda y el resto a la derecha */
+    align-items: center; /* Centra verticalmente */
+    padding-right: 100px; /* AUMENTADO SIGNIFICATIVAMENTE el padding a la derecha para dejar mucho espacio para el botón y el texto */
+    margin-bottom: 10px; /* Espacio debajo del encabezado */
+    /* gap: 10px; */ /* Puedes añadir un gap si quieres espacio entre los elementos flex (número, resumen, metraje) */
+    /* Mantén cualquier otro estilo existente */
+}
+
+/* Reglas para limitar el ancho del texto de la descripción y el metraje en el encabezado */
+/* AÑADE estas reglas si no existen, o MODIFICA si ya existen */
+.segment-header-line .segment-item-summary,
+.segment-header-line .segment-metraje-display {
+    /* Limita el ancho máximo para que no invadan el área del botón */
+    /* Calculamos un ancho máximo que es el espacio disponible menos un buffer */
+    max-width: calc(100% - 120px); /* Ajusta este valor (120px) si es necesario. Es una estimación del espacio que necesitan el número de segmento y el botón. */
+    overflow: hidden; /* Oculta cualquier texto que exceda el max-width */
+    text-overflow: ellipsis; /* Añade puntos suspensivos (...) al final del texto truncado */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    /* Si estás usando gap en .segment-header-line, no necesitas margin-right */
+    /* Si no usas gap, puedes añadir un pequeño margin-right aquí para separar el resumen y el metraje */
+    /* margin-right: 10px; */
+}
+
+
+/* Estilos para el botón de eliminar segmento ('X') - Posicionado en la esquina */
+/* Mantén esta regla como está (con el posicionamiento absoluto y estilos visuales) */
+.remove-segment-btn {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 5px; /* Distancia desde arriba */
+    right: 5px; /* Distancia desde la derecha */
+    z-index: 10; /* Asegura que esté por encima de otros otros contenidos si se solapan */
+
+    /* Estilos visuales (rojo discreto, tamaño) - Mantenidos */
+    background-color: transparent;
+    color: rgba(255, 0, 0, 0.5);
+    border: none;
+    padding: 8px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 1;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.remove-segment-btn:hover {
+    color: rgba(255, 0, 0, 0.8);
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Estilos para los botones de agregar segmento (Muro y Cielo) - Sin cambios */
+/* Mantén esta regla sin modificar */
+.add-segment-btn {
+    display: block;
+    width: auto;
+    background-color: #556B2F; /* Verde oliva oscuro */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.add-segment-btn:hover {
+    background-color: #808000; /* Verde oliva más claro */
+}
